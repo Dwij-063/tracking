@@ -16,7 +16,7 @@
 
                 console.log("Sending:", lat, lon);
 
-                fetch("http://10.13.19.116:5000/gps?lat=" + lat + "&lon=" + lon);
+                fetch(`https://10.13.19.116:5000/gps?lat=${lat}&lon=${lon}`);
             }, (error) => {
                 console.log("Error:", error);
             });
