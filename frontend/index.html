@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Robot Tracker</title>
-</head>
-
 <body>
+
     <h2>Tracking Robot Location...</h2>
 
+    <button onclick="startTracking()">Start Tracking</button>
+
     <script>
-        setInterval(() => {
+        function startTracking() {
             navigator.geolocation.getCurrentPosition((position) => {
-                let lat = position.coords.latitude;
-                let lon = position.coords.longitude;
+                alert("Location access granted!");
 
-                console.log("Sending:", lat, lon);
+                setInterval(() => {
+                    let lat = position.coords.latitude;
+                    let lon = position.coords.longitude;
 
-                fetch(`https://10.13.19.116:5000/gps?lat=${lat}&lon=${lon}`);
+                    console.log("Sending:", lat, lon);
+
+                    fetch(`https://tracking-1-27to.onrender.com/gps?lat=${lat}&lon=${lon}`);
+                }, 2000);
+
             }, (error) => {
-                console.log("Error:", error);
+                alert("Error: " + error.message);
             });
-        }, 2000);
+        }
     </script>
 
 </body>

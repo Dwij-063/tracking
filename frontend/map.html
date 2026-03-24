@@ -19,16 +19,16 @@
         var marker = L.marker([18.5204, 73.8567]).addTo(map);
 
         setInterval(() => {
-            fetch("http://192.168.x.x:5000/location")
-                .then(res => res.json())
-                .then(data => {
-                    let lat = data.lat;
-                    let lon = data.lon;
+    fetch("https://tracking-1-27to.onrender.com/location")
+    .then(res => res.json())
+    .then(data => {
+        let lat = data.lat;
+        let lon = data.lon;
 
-                    marker.setLatLng([lat, lon]);
-                    map.setView([lat, lon]);
-                });
-        }, 2000);
+        marker.setLatLng([lat, lon]);
+        map.setView([lat, lon]);
+    });
+}, 2000);
     </script>
 
 </body>
