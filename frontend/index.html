@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Robot Tracker</title>
+</head>
+
+<body>
+    <h2>Tracking Robot Location...</h2>
+
+    <script>
+        setInterval(() => {
+            navigator.geolocation.getCurrentPosition((position) => {
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+
+                console.log("Sending:", lat, lon);
+
+                fetch("http://10.13.19.116:5000/gps?lat=" + lat + "&lon=" + lon);
+            }, (error) => {
+                console.log("Error:", error);
+            });
+        }, 2000);
+    </script>
+
+</body>
+
+</html>
